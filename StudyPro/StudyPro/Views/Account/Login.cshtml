@@ -1,0 +1,28 @@
+﻿@model StudyPro.Models.Authentication.Login
+
+@{
+    ViewBag.Title = "Login";
+}
+
+<div class="card col-4 shadow">
+    <div class="card-header bg-dark bg-opacity-50 text-white h3">Login</div>
+    <form method="post" class="card-body">
+
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" asp-for="@Model.UserName" />
+            <label asp-for="@Model.UserName"></label>
+            <span asp-validation-for="@Model.UserName"></span>
+        </div>
+
+        <div class="form-floating mb-3">
+            <input type="password" class="form-control" asp-for="@Model.Password" />
+            <label asp-for="@Model.Password"></label>
+            <span asp-validation-for="@Model.Password"></span>
+        </div>
+
+        <div class="form-floating mb-3">
+            <button type="submit" class="btn btn-outline-success">Login</button>
+        </div>
+
+    </form>
+</div>

@@ -1,0 +1,68 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model CategoryDetailsModel
+@{
+}
+<div id="gridContainer">
+<h1>@Model.Category.CategoryName</h1>
+</div>
+
+<div id="gridContainer">
+    <div id="card-container">
+        <div class="pb-2 gridFullRow"><button type="submit" class="btn btn-outline-success" id="showFormButton">Add Card</button></div>
+
+        <form id="showForm" class="d-none gridFullRow">
+            <div class="row pt-2 pb-2">
+                <div class=" form-floating col-md-6">
+                    <input type="text" class="form-control" id="newTerm" placeholder="Term">
+                    <label for="newTerm" class="ms-3 ps-2">Term</label>
+                </div>
+                <div class="form-floating col-md-6">
+                    <select class="form-select" id="selectLevel">
+                        <option value="1">Easy</option>
+                        <option value="2">Intermediate</option>
+                        <option value="3">Advanced</option>
+                    </select>
+                    <label for="selectLevel" class="form-label ms-3 ps-2">Difficulty Level:</label>
+                </div>
+            </div>
+            <div class="form-floating pb-2">
+                <select class="form-select" id="selectCategory">
+                    @foreach (var category in Model.Categories)
+                    {
+                        if (category.CategoryID == Model.Category.CategoryID)
+                        {
+                            <option value="@category.CategoryID" selected>@category.CategoryName</option>
+                        }
+                        else
+                        {
+                            <option value="@category.CategoryID">@category.CategoryName</option>
+                        }
+                    }
+                </select>
+                <label for="selectCategory" class="form-label">Category:</label>
+            </div>
+            <div class="form-group pb-2">
+                <div class="form-floating">
+                    <textarea class="form-control" id="newDefinition" rows="3"></textarea>
+                    <label for="newDefinition">Definition</label>
+                </div>
+            </div>
+            <div class="d-flex justify-content-between">
+                <div class="pb-2"><button type="submit" class="btn btn-outline-success" id="newTermButton">Submit</button></div>
+                <div class="pb-2"><button type="submit" class="btn btn-outline-success" id="newTermAndUploadButton">Submit & Upload Picture</button></div>
+             </div>
+    
+        </form>
+
+    </div>
+</div>
+<div class="snackbar" id="snackbar"><span id="cardTitle"></span> has been updated</div>
+<div class="snackbar" id="snackbarDelete"><span id="deleteTitle"></span> has been deleted</div>
+
+
+@section Scripts
+    {
+    <script src="/js/card.js"></script>
+}

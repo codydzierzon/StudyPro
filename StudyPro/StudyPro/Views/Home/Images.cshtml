@@ -1,0 +1,23 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model List<string>
+@{
+    Layout = "";
+    var images = Model;
+
+    var comments = new List<String>();
+    comments.Add("Awesome");
+    comments.Add("Cool");
+}
+
+
+@foreach (var image in images)
+{
+    <img src="/uploads/@image"/>
+}
+
+@foreach (var comment in comments)
+{
+    <h3>@comment</h3>
+}
